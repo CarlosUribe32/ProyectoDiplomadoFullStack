@@ -1,0 +1,23 @@
+<%- include("header") -%> 
+
+    <div class="container col-md-5">
+    <div class="card-body">
+        <form action="/editar/<%=tarea._id%> " method="POST">
+            <div class="form-group">
+                <label>Area de la Empresa</label>
+                <input type="text" id="Titulo" name="Titulo" value="<%=tarea.Titulo %> " placeholder="Ingrese el titulo de la actividad" class="form-control mb-4">
+            </div>
+            <div class="form-group">
+                <label>Responsable</label>
+                <textarea class="form-control mb-4" id="user" name="user"   ><%=tarea.descripcion %> </textarea>
+            </div>
+            <div class="form-group">
+                <label>Detalle del Problema</label>
+                <textarea class="form-control mb-4" id="descripcion" name="descripcion" placeholder="Ingrese la descripcion de la actividad"  ><%=tarea.descripcion %> </textarea>
+            </div>
+            <button type="submit" class="btn btn-dark btn-block"> Actualizar</button>
+        </form>
+    </div>
+</div>
+
+<% include("footer") %>  

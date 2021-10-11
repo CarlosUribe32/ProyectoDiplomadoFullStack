@@ -1,0 +1,94 @@
+<%- include("header")  -%> 
+
+<div class="container">
+    <div class="row">
+
+ <!-- FORMULARIO PARA INGRESAR ACTIVIDADES -->
+
+        <div class="col-md-4">
+            <div class="card">
+                <h1>Crear Tarea</h1>
+                <div class="card-body">
+                    <form action="/agregarActividad" method="POST">
+
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Proceso</label>
+                            <select class="form-control" id="Titulo" name="Titulo">
+                                <option></option>
+                              <option>Sistemas</option>
+                              <option>Contabilidad</option>
+                              <option>Gestion humana</option>
+                              <option>SST</option>
+                              <option>Calidad</option>
+                              <option>Ambiental</option>
+                              <option>Gerencia</option>
+                              <option>Técnica</option>
+                              <option>Produccion</option>
+                              <option>Equipos</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Asignado a:</label>
+                            <select class="form-control" id="user" name="user">
+                              <option>frank.marin</option>
+                              <option>david.cadavid</option>
+                              <option>carlos.uribe</option>
+                            </select>
+                          </div>
+
+                        <div class="form-group">
+                            <label >Descripción del Problema</label>
+                            <textarea class="form-control mb-3" id="descripcion" name="descripcion" placeholder="Detalle"  ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-block"> Crear Tarea</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+<!-- TABLA DE ACTIVIDADES -->
+
+        <div class="col-md-8">
+            <table class="table table-bordered table-hover">
+            
+            <thead>
+                <tr>
+                    <th>ID Tarea</th>
+                    <th>Proceso</th>
+                    <th>Descripcion del Problema</th>
+                    <th>Responsable</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0;i<tareas.length;i++ ){  %> 
+                    <tr>
+                        <td><%= i+1 %> </td>
+                        <td><%= tareas[i].Titulo %> </td>
+                        <td><%=tareas[i].descripcion  %> </td>
+                        <td><%=tareas[i].user  %> </td>
+                        <td >
+                         <a href="/cambiarEstado/<%=tareas[i]._id %> " class="btn <%= tareas[i].estado ? 'btn-success' : 'btn-light'%>  ">Realizado</a>
+                         <a href="/eliminar/<%=tareas[i]._id %>" class="btn btn-dark">Eliminar</a>
+                         <a href="/editar/<%=tareas[i]._id %>" class="btn btn-link">Editar</a>
+                        </td>
+                    </tr>
+                
+            <% } %> 
+               
+            </tbody>
+        </table>
+        </div>
+
+    </div>
+</div>
+
+<br/>
+
+
+
+<%- include("footer")  -%> 

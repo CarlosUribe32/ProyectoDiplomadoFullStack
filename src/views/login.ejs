@@ -1,0 +1,38 @@
+<%- include("header")  -%> 
+
+<div class="container">
+    <div class="row">
+
+ <!-- FORMULARIO PARA INGRESAR ACTIVIDADES -->
+
+        <div class="col-md-4">
+            <div class="card">
+                <h1>Iniciar Sesión</h1>
+                <div class="card-body">
+                    <form action="/agregarActividad" method="POST">
+
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Usuario</label>
+                            <imput class="form-control" id="User" name="user">
+                              
+                          </div>
+
+                        <div class="form-group">
+                            <label >Clave</label>
+                            <input type="password" class="form-control mb-3" id="password" name="password"   >
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-block"> Iniciar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+<br/>
+
+
+
+<%- include("footer")  -%> 
