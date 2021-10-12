@@ -32,9 +32,12 @@
                           <div class="form-group">
                             <label for="exampleFormControlSelect1">Asignado a:</label>
                             <select class="form-control" id="user" name="user">
-                              <option>frank.marin</option>
+                              <!-- <option>frank.marin</option>
                               <option>david.cadavid</option>
-                              <option>carlos.uribe</option>
+                              <option>carlos.uribe</option> -->
+                                <% for (var i=1;i<usuarios.length;i++ ){   %>
+                                    <option><%= usuarios[i].user%> </option> 
+                                <%  }%> 
                             </select>
                           </div>
 
@@ -72,7 +75,7 @@
                         <td><%=tareas[i].descripcion  %> </td>
                         <td><%=tareas[i].user  %> </td>
                         <td >
-                         <a href="/cambiarEstado/<%=tareas[i]._id %> " class="btn <%= tareas[i].estado ? 'btn-success' : 'btn-light'%>  ">Realizado</a>
+                         <a href="/cambiarEstado/<%=tareas[i]._id %> " class="btn <%= tareas[i].estado ? 'btn-success' : 'btn-light'%>  "><%= tareas[i].estado ? 'Realizado' : 'Iniciado'%></a>
                          <a href="/eliminar/<%=tareas[i]._id %>" class="btn btn-dark">Eliminar</a>
                          <a href="/editar/<%=tareas[i]._id %>" class="btn btn-link">Editar</a>
                         </td>

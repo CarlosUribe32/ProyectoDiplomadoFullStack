@@ -32,27 +32,28 @@ router.post("/agregarUser", async(req, res)=>{
 
 router.get("/index", async(req, res)=>{
     const tareas= await Tarea.find()
-    res.render("index",{tareas})
+    const usuarios = await Usuario.find()
+    res.render("index",{tareas, usuarios})
 })
 
 router.post("/agregarActividad", async(req,res)=>{
     const tarea = new Tarea(req.body)
     await tarea.save()
     console.log(req.body)
-    res.redirect("/")
+    res.redirect("/index")
 })
 
 router.get("/cambiarEstado/:id",async(req,res)=>{
    const tareaBuscada= await Tarea.findById(req.params.id)
    tareaBuscada.estado=!tareaBuscada.estado
    await tareaBuscada.save()
-   res.redirect("/")
+   res.redirect("/index")
 
 })
 router.get("/eliminar/:id",async(req,res)=>{
    const id =req.params.id
    await Tarea.remove({_id:id})
-   res.redirect("/")
+   res.redirect("/index")
 
 })
 
