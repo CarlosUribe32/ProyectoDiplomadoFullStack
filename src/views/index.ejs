@@ -75,7 +75,7 @@
                         <td><%=tareas[i].descripcion  %> </td>
                         <td><%=tareas[i].user  %> </td>
                         <td >
-                         <a href="/cambiarEstado/<%=tareas[i]._id %> " class="btn <%= tareas[i].estado ? 'btn-success' : 'btn-light'%>  "><%= tareas[i].estado ? 'Realizado' : 'Iniciado'%></a>
+                         <!-- <a href="/cambiarEstado/<%=tareas[i]._id %> " class="btn <%= tareas[i].estado ? 'btn-success' : 'btn-light'%>  "><%= tareas[i].estado ? 'Realizado' : 'Iniciado'%></a> -->
                          <a href="/eliminar/<%=tareas[i]._id %>" class="btn btn-dark">Eliminar</a>
                          <a href="/editar/<%=tareas[i]._id %>" class="btn btn-link">Editar</a>
                         </td>

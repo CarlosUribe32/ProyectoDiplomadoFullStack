@@ -23,6 +23,8 @@ router.get("/",async(req,res)=>{
     res.render("login")
 })
 
+
+//Este es el plato fuerte del route
 router.post("/agregarUser", async(req, res)=>{
     const user = new Usuario(req.body)
     console.log(user.user)
@@ -32,14 +34,16 @@ router.post("/agregarUser", async(req, res)=>{
     
     for(let u=0; u<usuarios.length; u++){
         // console.log(usuarios[u].user)
-        if(usuarios[u].user===user.user && usuarios[u].password===user.password){
+        if(usuarios[u].user===user.user){
             userFind=true;
             break
         }
     }
     if(userFind===false)
         await user.save()
-    res.redirect("/index")
+
+    if(user.user===usuarios[0].user && user.password===usuarios[0].password)
+        res.redirect("/index")
 })
 
 router.get("/index", async(req, res)=>{
@@ -50,8 +54,10 @@ router.get("/index", async(req, res)=>{
 
 router.post("/agregarActividad", async(req,res)=>{
     const tarea = new Tarea(req.body)
-    await tarea.save()
-    console.log(req.body)
+    if(tarea.Titulo!=='' && tarea.user!=='' && tarea.descripcion!==''){
+        await tarea.save()
+        console.log(req.body)
+    }
     res.redirect("/index")
 })
 
@@ -72,15 +78,17 @@ router.get("/eliminar/:id",async(req,res)=>{
 router.get("/editar/:id",async(req,res)=>{
     const {id}=req.params
     const tarea= await Tarea.findById(id)
+    const usuarios = await Usuario.find()
+
     console.log(tarea.descripcion)
-    res.render("edit",{tarea})
+    res.render("edit",{tarea, usuarios})
 
 })
 
 router.post("/editar/:id",async(req,res)=>{
     const {id}=req.params
     await Tarea.update({_id:id},req.body)
-    res.redirect("/")
+    res.redirect("/index")
 
 })
 

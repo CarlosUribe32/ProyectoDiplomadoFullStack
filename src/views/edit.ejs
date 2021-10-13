@@ -9,7 +9,11 @@
             </div>
             <div class="form-group">
                 <label>Responsable</label>
-                <textarea class="form-control mb-4" id="user" name="user"   ><%=tarea.descripcion %> </textarea>
+                <select class="form-control" id="user" name="user">
+                      <% for (var i=1;i<usuarios.length;i++ ){   %>
+                          <option><%= usuarios[i].user%> </option> 
+                      <%  }%> 
+                  </select>
             </div>
             <div class="form-group">
                 <label>Detalle del Problema</label>
