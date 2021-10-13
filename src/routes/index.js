@@ -25,8 +25,20 @@ router.get("/",async(req,res)=>{
 
 router.post("/agregarUser", async(req, res)=>{
     const user = new Usuario(req.body)
-    console.log(req.body)
-    await user.save()
+    console.log(user.user)
+
+    const usuarios = await Usuario.find()
+    let userFind=false;
+    
+    for(let u=0; u<usuarios.length; u++){
+        // console.log(usuarios[u].user)
+        if(usuarios[u].user===user.user && usuarios[u].password===user.password){
+            userFind=true;
+            break
+        }
+    }
+    if(userFind===false)
+        await user.save()
     res.redirect("/index")
 })
 
