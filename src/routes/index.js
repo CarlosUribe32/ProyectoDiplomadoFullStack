@@ -31,25 +31,39 @@ router.post("/agregarUser", async(req, res)=>{
 
     const usuarios = await Usuario.find()
     let userFind=false;
+    let posUser
     
     for(let u=0; u<usuarios.length; u++){
         // console.log(usuarios[u].user)
         if(usuarios[u].user===user.user){
-            userFind=true;
+            userFind=true
+            posUser=u
             break
         }
     }
-    if(userFind===false)
-        await user.save()
-
+    
     if(user.user===usuarios[0].user && user.password===usuarios[0].password)
         res.redirect("/index")
+
+    else if(userFind===false){
+        await user.save()
+        res.redirect(`/users/${user.user}`)
+    }
+
+    else if(userFind===true && user.password===usuarios[posUser].password)
+        res.redirect(`/users/${user.user}`)
 })
 
 router.get("/index", async(req, res)=>{
     const tareas= await Tarea.find()
     const usuarios = await Usuario.find()
     res.render("index",{tareas, usuarios})
+})
+
+router.get("/users/:user", async(req, res)=>{
+    const tareas= await Tarea.find()
+    const user = req.params.user
+    res.render("users",{tareas, user})
 })
 
 router.post("/agregarActividad", async(req,res)=>{
