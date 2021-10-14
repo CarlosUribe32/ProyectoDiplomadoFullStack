@@ -75,11 +75,13 @@ router.post("/agregarActividad", async(req,res)=>{
     res.redirect("/index")
 })
 
-router.get("/cambiarEstado/:id",async(req,res)=>{
+router.get("/cambiarEstado/:id&:user",async(req,res)=>{
    const tareaBuscada= await Tarea.findById(req.params.id)
+   const user = req.params.user
+    console.log(user)
    tareaBuscada.estado=!tareaBuscada.estado
    await tareaBuscada.save()
-   res.redirect("/index")
+   res.redirect(`/users/${user}`)
 
 })
 router.get("/eliminar/:id",async(req,res)=>{
