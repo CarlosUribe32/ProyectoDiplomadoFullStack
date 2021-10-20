@@ -12,13 +12,14 @@
 
 
 <div class="container">
+    <h1 class="mb-5 "><strong>Help Desk</strong></h1>
     <div class="row">
 
  <!-- FORMULARIO PARA INGRESAR ACTIVIDADES -->
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
-                <h1>Iniciar Sesión</h1>
+                <h2>Iniciar Sesión</h2>
                 <div class="card-body">
                     <form action="/agregarUser" method="POST">
 
@@ -38,7 +39,31 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Admin</div>
+                      Con el usuario admin el jefe de procesos puede acceder a la plataforma de creacion de tareas
+                    </div>
+                  </li>
 
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Usuarios</div>
+                      Si un usuario no esta registrado el login lo creara automaticamente
+                    </div>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">Reportes</div>
+                      Los reportes pueden ser accedidos sin importar el usuario: Son generales
+                    </div>
+                  </li>
+            </ol>
+        </div>
+    </div>
 
 
 

@@ -36,5 +36,5 @@ app.use("/",Routes)
 // ejecutar servidor
 
 app.listen(app.get("port"),()=>{
-    console.log("Sevidor On en el puerto"+app.get("port"))
+    console.log("Sevidor On en el puerto "+app.get("port"))
 })

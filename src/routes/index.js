@@ -108,4 +108,9 @@ router.post("/editar/:id",async(req,res)=>{
 
 })
 
+router.get("/reporte", async(req, res)=>{
+    const tareas= await Tarea.find()
+    res.render("reporte",{tareas})
+})
+
 module.exports=router;
