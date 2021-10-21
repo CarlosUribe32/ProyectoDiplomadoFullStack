@@ -7,7 +7,7 @@
 <!-- TABLA DE ACTIVIDADES -->
 
         <div class="col-md-8">
-            <h1>Tareas de <%= user %> </h1>
+            <h1>Bandeja de Entrada de <%= user %> </h1>
             <table class="table table-bordered table-hover">
             
             <thead>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                 <% for (var i=0;i<tareas.length;i++ ){  if(tareas[i].user===user){%> 
-                    <tr>
+                    <tr class="<%=tareas[i].estado? 'table-info':'' %> ">
                         <td><%= i+1 %> </td>
                         <td><%= tareas[i].Titulo %> </td>
                         <td><%=tareas[i].descripcion  %> </td>

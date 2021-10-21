@@ -113,4 +113,8 @@ router.get("/reporte", async(req, res)=>{
     res.render("reporte",{tareas})
 })
 
+router.get("/acerca", (req, res)=>{
+    res.render("acerca")
+})
+
 module.exports=router;
